@@ -6,6 +6,9 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Customers from './pages/Customers';
 import CustomerForm from './pages/CustomerForm';
+import Policies from './pages/Policies';
+import PolicyForm from './pages/PolicyForm';
+import Premiums from './pages/Premiums';
 
 function ProtectedRoute({ children }) {
   const { token } = useAuth();
@@ -29,6 +32,9 @@ function AppRoutes() {
         <Route path="/customers" element={<Customers />} />
         <Route path="/customers/new" element={<CustomerForm />} />
         <Route path="/customers/:id/edit" element={<CustomerForm />} />
+        <Route path="/policies" element={<Policies />} />
+<Route path="/policies/new" element={<PolicyForm />} />
+<Route path="/premiums" element={<Premiums />} />
       </Route>
 
       <Route path="/" element={<Navigate to="/login" />} />
