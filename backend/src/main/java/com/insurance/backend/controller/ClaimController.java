@@ -46,4 +46,11 @@ public class ClaimController {
     public ResponseEntity<ClaimResponse> rejectClaim(@PathVariable Long id) {
         return ResponseEntity.ok(claimService.rejectClaim(id));
     }
+
+    @GetMapping("/paginated")
+    public ResponseEntity<org.springframework.data.domain.Page<ClaimResponse>> getClaimsPaginated(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        return ResponseEntity.ok(claimService.getAllClaimsPaginated(page, size));
+    }
 }

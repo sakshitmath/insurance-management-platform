@@ -12,4 +12,6 @@ public interface PolicyRepository extends JpaRepository<Policy, Long> {
     List<Policy> findByStatus(String status);
 
     boolean existsByPolicyNumber(String policyNumber);
+
+    long countByStatus(String status);
 }

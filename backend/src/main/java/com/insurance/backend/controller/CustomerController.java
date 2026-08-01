@@ -47,4 +47,11 @@ public class CustomerController {
         customerService.deleteCustomer(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/paginated")
+    public ResponseEntity<org.springframework.data.domain.Page<CustomerResponse>> getCustomersPaginated(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        return ResponseEntity.ok(customerService.getAllCustomersPaginated(page, size));
+    }
 }

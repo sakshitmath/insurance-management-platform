@@ -26,6 +26,13 @@ public class SecurityConfig {
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/customers/**").hasAnyRole("ADMIN", "AGENT")
+                        .requestMatchers(org.springframework.http.HttpMethod.PUT, "/api/customers/**").hasAnyRole("ADMIN", "AGENT")
+                        .requestMatchers(org.springframework.http.HttpMethod.DELETE, "/api/customers/**").hasRole("ADMIN")
+                        .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/policies/**").hasAnyRole("ADMIN", "AGENT")
+                        .requestMatchers(org.springframework.http.HttpMethod.PUT, "/api/policies/**").hasAnyRole("ADMIN", "AGENT")
+                        .requestMatchers(org.springframework.http.HttpMethod.PUT, "/api/claims/*/approve").hasAnyRole("ADMIN", "AGENT")
+                        .requestMatchers(org.springframework.http.HttpMethod.PUT, "/api/claims/*/reject").hasAnyRole("ADMIN", "AGENT")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

@@ -98,4 +98,9 @@ public class PolicyService {
                 policy.getStatus()
         );
     }
+
+    public org.springframework.data.domain.Page<PolicyResponse> getAllPoliciesPaginated(int page, int size) {
+        org.springframework.data.domain.Pageable pageable = org.springframework.data.domain.PageRequest.of(page, size);
+        return policyRepository.findAll(pageable).map(this::toResponse);
+    }
 }

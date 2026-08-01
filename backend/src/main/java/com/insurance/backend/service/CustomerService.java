@@ -80,4 +80,9 @@ public class CustomerService {
                 customer.getEmail()
         );
     }
+
+    public org.springframework.data.domain.Page<CustomerResponse> getAllCustomersPaginated(int page, int size) {
+        org.springframework.data.domain.Pageable pageable = org.springframework.data.domain.PageRequest.of(page, size);
+        return customerRepository.findAll(pageable).map(this::toResponse);
+    }
 }

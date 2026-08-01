@@ -52,4 +52,11 @@ public class PolicyController {
     public ResponseEntity<PolicyResponse> cancelPolicy(@PathVariable Long id) {
         return ResponseEntity.ok(policyService.cancelPolicy(id));
     }
+
+    @GetMapping("/paginated")
+    public ResponseEntity<org.springframework.data.domain.Page<PolicyResponse>> getPoliciesPaginated(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        return ResponseEntity.ok(policyService.getAllPoliciesPaginated(page, size));
+    }
 }

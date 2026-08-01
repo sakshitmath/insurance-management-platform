@@ -81,4 +81,9 @@ public class ClaimService {
                 claim.getSubmissionDate()
         );
     }
+
+    public org.springframework.data.domain.Page<ClaimResponse> getAllClaimsPaginated(int page, int size) {
+        org.springframework.data.domain.Pageable pageable = org.springframework.data.domain.PageRequest.of(page, size);
+        return claimRepository.findAll(pageable).map(this::toResponse);
+    }
 }
