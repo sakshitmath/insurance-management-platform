@@ -11,6 +11,7 @@ import PolicyForm from './pages/PolicyForm';
 import Premiums from './pages/Premiums';
 import Claims from './pages/Claims';
 import Documents from './pages/Documents';
+import CustomerHistory from './pages/CustomerHistory';
 
 function ProtectedRoute({ children }) {
   const { token } = useAuth();
@@ -39,6 +40,7 @@ function AppRoutes() {
 <Route path="/premiums" element={<Premiums />} />
 <Route path="/claims" element={<Claims />} />
 <Route path="/documents" element={<Documents />} />
+<Route path="/customers/:id/history" element={<CustomerHistory />} />
       </Route>
 
       <Route path="/" element={<Navigate to="/login" />} />

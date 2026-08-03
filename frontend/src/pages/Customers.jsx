@@ -83,7 +83,8 @@ function Customers() {
               <td>{c.phone}</td>
               <td>{c.address}</td>
               <td className="space-x-3">
-                <Link to={`/customers/${c.id}/edit`} className="text-blue-400 hover:underline">Edit</Link>
+                <Link to={`/customers/${c.id}/history`} className="text-green-400 hover:underline mr-3">View</Link>
+<Link to={`/customers/${c.id}/edit`} className="text-blue-400 hover:underline">Edit</Link>
                 <button onClick={() => handleDelete(c.id)} className="text-red-400 hover:underline">Delete</button>
               </td>
             </tr>
